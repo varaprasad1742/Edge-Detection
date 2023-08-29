@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Camera Feed with Edge Detection</title>
+    
+</head>
+<body>
+    <h1>Camera Feed with Edge Detection</h1>
+    <div>
+        <img id="cameraFeed" src="{{ url_for('camera_feed') }}" alt="Camera Feed">
+    </div>
+    <button id="toggleEdgeButton">Click For Edge Detection</button>
+    <script>
+        document.getElementById("toggleEdgeButton").addEventListener("click", function() {
+            fetch("/toggle_edge_detection")
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.error("Error toggling edge detection:", error));
+        });
+    </script>
+</body>
+</html>
